@@ -1,0 +1,24 @@
+{
+    "response": {
+        "header": {
+            "resultCode": "0000",
+            "resultMsg": "OK"
+        },
+        "body": {
+            "items": {
+                "item": {
+                    "ed": "방한외래관광객",
+                    "edCd": "E",
+                    "natCd": 321,
+                    "natKorNm": "프랑스",
+                    "num": 898,
+                    "rnum": 1,
+                    "ym": 202012
+                }
+            },
+            "numOfRows": 10,
+            "pageNo": 1,
+            "totalCount": 1
+        }
+    }
+}

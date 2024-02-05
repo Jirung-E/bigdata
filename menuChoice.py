@@ -1,11 +1,3 @@
-# menuChoice   -> 메뉴
-# naverCrawler -> 네이버 크롤링
-# apiCrawler   -> 공공 Data 크롤링
-
-import os
-import json
-import webbrowser
-
 import naverCrawler as nc
 import apiCrawler as pc
 import graph

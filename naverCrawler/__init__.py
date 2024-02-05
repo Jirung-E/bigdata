@@ -60,7 +60,10 @@ def crawl():
     if data is not None:
         print("검색된 개수: ", data["total"])
 
-        nouns = getNouns(filterData(data))
+        data = filterData(data)
+        return keyword, data
+
+        nouns = getNouns(data)
         counters = Counter(nouns)
         
         print("nouns: ", nouns)
@@ -70,11 +73,37 @@ def crawl():
         for tag, count in counters.most_common(100):
             if len(str(tag)) > 1:
                 wordInfo[tag] = count
-        print("wordInfo: ", wordInfo)
+
+        return keyword, wordInfo
 
         json.dump(wordInfo, 
                 open(f"result/{keyword}.json", "w", encoding="utf-8"), 
                 ensure_ascii=False, indent=4)
+        
+    return keyword, None
+
+
+def getWordInfo(data):
+    nouns = getNouns(data)
+    counters = Counter(nouns)
+    
+    print("nouns: ", nouns)
+    print("counters: ", counters)
+
+    wordInfo = {}
+    for tag, count in counters.most_common(100):
+        if len(str(tag)) > 1:
+            wordInfo[tag] = count
+
+    return wordInfo
+
+
+def run():
+    keyword, data = crawl()
+    json.dump(data, 
+                open(f"result/naver/{keyword}.json", "w", encoding="utf-8"), 
+                ensure_ascii=False, 
+                indent=4)
 
 
 def main():

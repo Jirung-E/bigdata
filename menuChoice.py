@@ -2,9 +2,14 @@
 # naverCrawler -> 네이버 크롤링
 # apiCrawler   -> 공공 Data 크롤링
 
+import os
+import json
+import webbrowser
 
 import naverCrawler as nc
 import apiCrawler as pc
+import graph
+import wordcloud
 
 
 def printMenu():
@@ -26,12 +31,18 @@ while True:
     num = int(input("번호 입력: "))
 
     if num == 1:
-        nc.main()
+        nc.run()
     elif num == 2:
-        pc.main()
+        pc.run()
+    elif num == 3:
+        graph.showDataList()
+        graph.draw()
+    elif num == 4:
+        wordcloud.showDataList()
+        wordcloud.generate()
     elif num == 5:
         print("종료합니다.")
         break
-    else: 
+    else:
         print("잘못된 입력입니다. 다시 입력해주세요.")
         continue

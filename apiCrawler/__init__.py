@@ -114,8 +114,24 @@ def crawl():
 
         print(end="\n")
 
+    return result_json, result_csv
+
     jsonFileWrite(result_json)
     csvFileWrite(result_csv)
+
+
+def run():
+    json_result, csv_result = crawl()
+
+    json.dump(json_result, 
+                open("result/api/data.json", "w", encoding="utf-8"), 
+                ensure_ascii=False, 
+                indent=4)
+
+    cols = ["출입국", "방문객수", "연월"]
+    result_df = pd.DataFrame(csv_result, columns=cols)
+    result_df.to_csv("result/api/data.csv", index=True, encoding="utf-8")
+    #                                                             cp949
     
 
 # 년도 입력시 해당 년의 월별 관광객 수 출력
